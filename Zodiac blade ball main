@@ -1,0 +1,98 @@
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Window = Library.CreateLib("Zodiac blade ball", "BloodTheme")
+local Tab = Window:NewTab("☆ Main ")
+local Section = Tab:NewSection("Blade Ball")
+Section:NewButton("Auto Block/Auto Parry", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/main/autoparrybest"))()
+    print("Clicked")
+end)
+Section:NewButton("Manual Spam", "ButtonInfo", function()
+local gui, frame, button = Instance.new("ScreenGui", game.CoreGui), Instance.new("Frame"), Instance.new("TextButton")
+gui.ResetOnSpawn = false
+frame.Size, frame.Position, frame.BackgroundColor3, frame.BorderSizePixel, frame.Active, frame.Draggable, frame.Parent = UDim2.new(0, 150, 0, 75), UDim2.new(0, 10, 0, 10), Color3.new(0, 0, 0), 0, true, true, gui
+button.Text, button.Size, button.Position, button.BackgroundColor3, button.BorderColor3, button.BorderSizePixel, button.Font, button.TextColor3, button.TextSize, button.Parent = "Manual spam", UDim2.new(1, -20, 1, -20), UDim2.new(0, 10, 0, 10), Color3.new(0, 0, 0), Color3.new(), 2, Enum.Font.SourceSans, Color3.new(1, 1, 1), 16, frame
+
+local activated = false
+
+local function toggle()
+    activated, button.Text = not activated, activated and "Off" or "On"
+    
+    while activated do
+        local args = {1.5, CFrame.new(-254.29, 112.14, -119.27) * CFrame.Angles(-2.03, 0.57, 2.31), {["2617721424"] = Vector3.new(-273.40, -724.80, -20.92)}, {910, 154}}
+        game:GetService("ReplicatedStorage").Remotes.ParryAttempt:FireServer(unpack(args))
+        game:GetService("RunService").Heartbeat:Wait()
+        button.BorderColor3 = Color3.new(math.random(), math.random(), math.random())
+    end
+end
+
+local function showNotification()
+    game.StarterGui:SetCore("SendNotification", {Title = "Manual Spam", Text = "Made By sleepy", Duration = 5})
+end
+
+button.MouseButton1Click:Connect(function()
+    toggle()
+    showNotification()
+end)
+    print("Clicked")
+end)
+
+Section:NewButton("fps booster", "ButtonInfo", function()
+_G.Stop = false  --stop the script
+local function FOV()
+    if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("CameraPositioner") then 
+        game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("CameraPositioner"):Destroy()
+    end
+    local part = Instance.new("Part")
+    part.Name = "CameraPositioner"
+    part.Anchored = true 
+    part.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+    part.CanCollide = false
+    game:GetService("RunService").RenderStepped:Connect(function()
+        part.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(1,-100000000,-100)
+    end)
+    local camera = workspace.CurrentCamera
+    camera.CameraSubject = part
+    for _,v in pairs(workspace:GetDescendants()) do 
+    if v:IsA("ParticleEmitter") then 
+        v:Destroy()
+    end 
+    if v:IsA("Decal") then v:Destroy() end 
+    if v:IsA("BasePart") then v.Material = Enum.Material.SmoothPlastic end  
+    end 
+    if _G.Stop then 
+        camera.CameraSubject=game.Players.LocalPlayer.Character.Humanoid
+    end 
+end 
+
+FOV() 
+    print("Clicked")
+end)
+
+local Tab = Window:NewTab("☆ Credits")
+local Section = Tab:NewSection("Made By sleepy")
+local Section = Tab:NewSection("Join our server https://discord.com/invite/7xyZTnEq9K")
+
+local Tab = Window:NewTab("Zodiac ⭐️")
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ScreenGui"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+local Toggle = Instance.new("TextButton")
+Toggle.Name = "Toggle"
+Toggle.Parent = ScreenGui
+Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
+Toggle.Size = UDim2.new(0, 90, 0, 38)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "toggle"
+Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
+Toggle.TextSize = 28.000
+Toggle.Draggable = true
+Toggle.MouseButton1Click:connect(function()
+    Library:ToggleUI()
+end)
+
+local Corner = Instance.new("UICorner")
+Corner.Name = "Corner"
+Corner.Parent = Toggle
